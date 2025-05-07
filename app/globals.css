@@ -1,0 +1,226 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 266 100% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 268 100% 96%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 267 100% 96%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 266 100% 50%;
+    --chart-1: 266 100% 50%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 0 0% 98%;
+    --card: 224 71% 4%;
+    --card-foreground: 0 0% 98%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 266 100% 50%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 268 100% 4%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 267 100% 4%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 268 100% 12%;
+    --input: 268 100% 12%;
+    --ring: 266 100% 50%;
+    --chart-1: 266 100% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Light theme background */
+  :root:not(.dark) body {
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(240, 240, 255, 0.9)),
+                radial-gradient(circle at top left, rgba(147, 51, 234, 0.15), transparent 40%),
+                radial-gradient(circle at bottom right, rgba(79, 70, 229, 0.15), transparent 40%);
+    background-attachment: fixed;
+  }
+  
+  /* Dark theme background */
+  .dark body {
+    background: linear-gradient(to bottom right, rgba(var(--background-start-rgb), 0.9), rgba(var(--background-end-rgb), 0.9)),
+                radial-gradient(circle at top left, rgba(147, 51, 234, 0.1), transparent 40%),
+                radial-gradient(circle at bottom right, rgba(79, 70, 229, 0.1), transparent 40%);
+    background-attachment: fixed;
+  }
+  
+  /* Light theme neon effects */
+  :root:not(.dark) .neon-border {
+    box-shadow: 0 0 15px rgba(147, 51, 234, 0.4),
+                0 0 30px rgba(147, 51, 234, 0.2),
+                0 0 45px rgba(147, 51, 234, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  :root:not(.dark) .neon-text {
+    text-shadow: 0 0 10px rgba(147, 51, 234, 0.7),
+                 0 0 20px rgba(147, 51, 234, 0.5);
+    color: hsl(var(--primary));
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Dark theme neon effects */
+  .dark .neon-border {
+    box-shadow: 0 0 10px rgba(147, 51, 234, 0.3),
+                0 0 20px rgba(147, 51, 234, 0.2),
+                0 0 30px rgba(147, 51, 234, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .dark .neon-text {
+    text-shadow: 0 0 10px rgba(147, 51, 234, 0.5),
+                 0 0 20px rgba(147, 51, 234, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Hover effects */
+  .hover-glow {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  :root:not(.dark) .hover-glow:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 20px rgba(147, 51, 234, 0.5),
+                0 0 40px rgba(147, 51, 234, 0.3);
+  }
+  
+  .dark .hover-glow:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 15px rgba(147, 51, 234, 0.4),
+                0 0 30px rgba(147, 51, 234, 0.2);
+  }
+  
+  /* Button hover effects */
+  button {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  button:hover {
+    transform: translateY(-1px);
+  }
+  
+  button:active {
+    transform: translateY(1px);
+  }
+  
+  /* Card hover effects */
+  .bg-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .bg-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  /* Enhanced light theme card styles */
+  :root:not(.dark) .bg-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  :root:not(.dark) .bg-card:hover {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 20px rgba(147, 51, 234, 0.3);
+  }
+  
+  /* Enhanced light theme button styles */
+  :root:not(.dark) .btn-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary)/0.8));
+    box-shadow: 0 0 15px rgba(147, 51, 234, 0.4);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  :root:not(.dark) .btn-primary:hover {
+    box-shadow: 0 0 25px rgba(147, 51, 234, 0.6);
+    filter: brightness(1.1);
+  }
+  
+  /* Enhanced code block styling for light theme */
+  :root:not(.dark) pre {
+    background: rgba(249, 250, 251, 0.95);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(147, 51, 234, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  :root:not(.dark) pre:hover {
+    border-color: rgba(147, 51, 234, 0.4);
+    box-shadow: 0 0 15px rgba(147, 51, 234, 0.2);
+  }
+  
+  /* Input field hover effects */
+  input {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  input:hover {
+    border-color: hsl(var(--primary));
+  }
+  
+  input:focus {
+    box-shadow: 0 0 0 2px rgba(147, 51, 234, 0.2);
+  }
+}
